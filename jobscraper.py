@@ -1,6 +1,7 @@
+# Finished 180522 0100
+
 from bs4 import BeautifulSoup
 import requests
-import time
 
 
 #intro
