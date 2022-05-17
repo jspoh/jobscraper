@@ -11,6 +11,7 @@ This program takes the front page results from top job searching websites such a
 
 and displays information such as: 
 - Job title 
+- Company
 - Salary 
 - Location 
 - Job type 
