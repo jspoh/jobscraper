@@ -28,6 +28,7 @@ registered. This may cause problems such as missing information fields.
 However, restarting the program may work but the more reliable option would be to simply
 search for the job title in the job portal or by visiting the link provided.
 
-jobscraper_v2.py writes all information gathered onto a .txt document for easy reference. Here's a screenshot of the output
+jobscraper_v2.py writes all information gathered onto a .txt document for easy reference every x minutes as set by the user. 
+Here's a screenshot of the output:
 
 <img src='lib/result.PNG' alt="Image of jobscraper_v2.py's output in a .txt file">
