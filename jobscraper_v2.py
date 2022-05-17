@@ -28,6 +28,7 @@ be available on the link provided.
 
 
 user_keyword = input('Search for job: ')
+delay = int(input('Run this program every(in mins): '))
 
 
 def main():
@@ -196,5 +197,5 @@ def main():
 while True:
     print('Running jobscraper_v2.py..')
     main()
-    print('Waiting for 10 minutes before running the program again..')
-    time.sleep(600)
+    print(f'Waiting for {delay} minutes before running the program again..')
+    time.sleep(delay*60)
