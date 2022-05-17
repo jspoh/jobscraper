@@ -19,4 +19,4 @@ be available on the link provided.
 
 jobscraper_v2.py writes all information gathered onto a .txt document for easy reference. Here's a screenshot of the output
 
-<img src='lib/main.PNG' alt="Image of jobscraper_v2.py's output in a .txt file">
+<img src='lib/result.PNG' alt="Image of jobscraper_v2.py's output in a .txt file">
