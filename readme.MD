@@ -2,6 +2,8 @@
 
 Hello, thanks for using jobscraper!
 
+<a href='https://t.me/JobscraperSbot'>Telegram bot</a>
+
 This program takes the front page results from top job searching websites such as:
 - sg.indeed.com 
 - jobstreet.com.sg 
@@ -32,3 +34,7 @@ jobscraper_v2.py writes all information gathered onto a .txt document for easy r
 Here's a screenshot of the output:
 
 <img src='lib/result.PNG' alt="Image of jobscraper_v2.py's output in a .txt file">
+
+Program is also available through a telegram bot
+
+<img src='lib/telebot.PNG' alt='screenshot of jobscraper as a telegram bot'>
