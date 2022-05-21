@@ -56,7 +56,7 @@ def main():
 
         # sg.indeed.com
         keyword = user_keyword.replace(' ', '%20')
-        html_content = requests.get(f'https://sg.indeed.com/jobs?q={keyword}&l=Singapore&vjk=ebd90491e5a5306e').text
+        html_content = requests.get(f'https://sg.indeed.com/jobs?q={keyword}&l=Singapore&fromage=7&radius=10&sort=date&vjk=d37677b798fae49b').text
         soup = BeautifulSoup(html_content, 'lxml')
 
         all_job_titles = soup.findAll('div', class_='cardOutline')
@@ -84,7 +84,7 @@ def main():
 
         # jobstreet.com.sg
         keyword = user_keyword.replace(' ', '-')
-        html_content = requests.get(f'https://www.jobstreet.com.sg/en/job-search/{keyword}-jobs/').text
+        html_content = requests.get(f'https://www.jobstreet.com.sg/en/job-search/{keyword}-jobs-in-singapore/?createdAt=7d&sort=createdAt').text
         soup = BeautifulSoup(html_content, 'lxml')
 
         all_job_titles = soup.findAll('h1', class_='sx2jih0 zcydq84u _18qlyvc0 _18qlyvc1x _18qlyvc3 _18qlyvca')
@@ -111,7 +111,7 @@ def main():
 
         # sg.jobsdb.com
         keyword = user_keyword.replace(' ', '+')
-        html_content = requests.get(f'https://sg.jobsdb.com/j?sp=homepage&q={keyword}&l=').text
+        html_content = requests.get(f'https://sg.jobsdb.com/j?a=7d&l=Singapore&q={keyword}&r=50&sp=facet_distance&st=date').text
         soup = BeautifulSoup(html_content, 'lxml')
 
         all_job_titles = soup.findAll('article', class_='job-card')
@@ -141,8 +141,8 @@ def main():
 
         # sg.linkedin.com
         keyword = user_keyword.replace(' ', '%20')
-        html_content = requests.get(f'https://sg.linkedin.com/jobs/search?keywords={keyword}&location=Singapore%2C%20Singapore&\
-        geoId=&trk=homepage-jobseeker_jobs-search-bar_search-submit&position=1&pageNum=0').text
+        html_content = requests.get(f'https://sg.linkedin.com/jobs/search?keywords={keyword}&location=Singapore%2C%20\
+Singapore&locationId=&geoId=103804675&f_TPR=r604800&f_PP=103804675&distance=50&position=1&pageNum=0').text
         soup = BeautifulSoup(html_content, 'lxml')
 
         all_job_titles = soup.findAll('div', class_='base-search-card__info')
@@ -168,7 +168,7 @@ def main():
 
         # jobscentral.com.sg
         keyword = user_keyword.replace(' ', '+')
-        html_content = requests.get(f'https://jobscentral.com.sg/jobs?emp=&keywords={keyword}&location=').text
+        html_content = requests.get(f'https://jobscentral.com.sg/jobs?emp=&keywords={keyword}&location=&sort=date_desc').text
         soup = BeautifulSoup(html_content, 'lxml')
 
         all_job_titles = soup.findAll('li', class_='data-results-content-parent relative')
@@ -186,6 +186,7 @@ def main():
                 f.write(f'Job type: {j.div.contents[3].contents[5].contents[5].text}\n')
             except IndexError:
                 f.write('Job type unavailable\n')
+            f.write(f'Posted: {j.div.contents[3].div.text}')
             f.write(f"Link: https://jobscentral.com.sg{j.a['href']}\n")
             f.write('\n\n')
 
