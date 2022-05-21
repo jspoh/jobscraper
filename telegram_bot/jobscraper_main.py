@@ -17,6 +17,17 @@ feedback_mode = False
 
 print('Initializing bot..\n')
 
+try:
+    with open('logs/jobscraper_logs.txt', 'x'):
+        pass
+except FileExistsError:
+    pass
+try:
+    with open('logs/jobscraper_feedbacks.txt', 'x'):
+        pass
+except FileExistsError:
+    pass
+
 
 def greeting(ui, update):
     if ui in hi:
@@ -45,7 +56,7 @@ def handle_message(update, context):
     global search_mode
     global searchall_mode
     global feedback_mode
-    with open('jobscraper_logs.txt', 'a') as logs:
+    with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f'''
 {update.message.chat.first_name} {update.message.chat.last_name}:
 {update.message.text}
@@ -56,25 +67,25 @@ def handle_message(update, context):
     if search_mode:
         update.message.reply_text(f'Searching for {user_input}..')
         search(user_input, update)
-        with open('jobs_from_jobscraper1.txt', encoding="utf-8") as final:
+        with open('results/jobs_from_indeed.txt', encoding="utf-8") as final:
             update.message.reply_text(final.read())
-        with open('jobs_from_jobscraper2.txt', encoding="utf-8") as final:
+        with open('results/jobs_from_jobstreet.txt', encoding="utf-8") as final:
             update.message.reply_text(final.read())
-        with open('jobs_from_jobscraper3.txt', encoding="utf-8") as final:
+        with open('results/jobs_from_jobsdb.txt', encoding="utf-8") as final:
             update.message.reply_text(final.read())
-        with open('jobs_from_jobscraper4.txt', encoding="utf-8") as final:
+        with open('results/jobs_from_linkedin.txt', encoding="utf-8") as final:
             update.message.reply_text(final.read())
-        with open('jobs_from_jobscraper5.txt', encoding="utf-8") as final:
+        with open('results/jobs_from_jobscentral.txt', encoding="utf-8") as final:
             update.message.reply_text(final.read())
         search_mode = False
     elif searchall_mode:
         update.message.reply_text(f'Searching all {user_input}..')
         search_all(user_input, update)
-        with open('alljobs_jobscraper.txt') as alljobsfile:
+        with open('results/alljobs_jobscraper.txt') as alljobsfile:
             update.message.reply_document(alljobsfile)
         searchall_mode = False
     elif feedback_mode:
-        with open('jobscraper_feedbacks.txt', 'a') as logs:
+        with open('logs/jobscraper_feedbacks.txt', 'a') as logs:
             update.message.reply_text('Thank you for your input!')
             logs.write(f"{update.message.chat.first_name} {update.message.chat.last_name}\n{update['message']['date']}\n{user_input}\n\n")
             feedback_mode = False
@@ -83,7 +94,7 @@ def handle_message(update, context):
 
 
 def start_command(update, context):
-    with open('jobscraper_logs.txt', 'a') as logs:
+    with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f'''
 {update.message.chat.first_name} {update.message.chat.last_name}:
 {update.message.text}
@@ -101,7 +112,7 @@ def search_command(update, context):
     global feedback_mode
     searchall_mode = False
     feedback_mode = False
-    with open('jobscraper_logs.txt', 'a') as logs:
+    with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f'''
 {update.message.chat.first_name} {update.message.chat.last_name}:
 {update.message.text}
@@ -119,7 +130,7 @@ def searchall_command(update, context):
     global feedback_mode
     search_mode = False
     feedback_mode = False
-    with open('jobscraper_logs.txt', 'a') as logs:
+    with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f'''
 {update.message.chat.first_name} {update.message.chat.last_name}:
 {update.message.text}
@@ -142,7 +153,7 @@ def feedback_command(update, context):
 
 
 def help_command(update, context):
-    with open('jobscraper_logs.txt', 'a') as logs:
+    with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f'''
 {update.message.chat.first_name} {update.message.chat.last_name}:
 {update.message.text}
@@ -174,7 +185,7 @@ so that you don't have to navigate through different websites for the results. O
 def error(update, context):
     update.message.reply_text('An exception has occurred, please try again!')
     print(f"ERROR:\nUpdate {update} caused error {context.error}\n")
-    with open('jobscraper_logs.txt', 'a') as logs:
+    with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f"ERROR:\nUpdate {update} caused error {context.error}\n")
 
 
