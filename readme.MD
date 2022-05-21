@@ -37,4 +37,6 @@ Here's a screenshot of the output:
 
 Program is also available through a telegram bot
 
-<img src='lib/telebot.PNG' alt='screenshot of jobscraper as a telegram bot'>
+<img src='lib/telebot_search.PNG' alt='screenshot of jobscraper as a telegram bot'>
+
+<img src='lib/telebot_searchall.PNG' alt='screenshot of jobscraper as a telegram bot'>
