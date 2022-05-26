@@ -62,6 +62,11 @@ def handle_message(update, context):
 {update.message.text}
 {update['message']['date']}
 ''')
+    print(f'''
+{update.message.chat.first_name} {update.message.chat.last_name}:
+{update.message.text}
+{update['message']['date']}
+''')
     user_input = str(update.message.text)
 
     if search_mode:
@@ -81,7 +86,7 @@ def handle_message(update, context):
     elif searchall_mode:
         update.message.reply_text(f'Searching all {user_input}..')
         search_all(user_input, update)
-        with open('results/alljobs_jobscraper.txt') as alljobsfile:
+        with open('results/alljobs_jobscraper.txt', encoding="utf-8") as alljobsfile:
             update.message.reply_document(alljobsfile)
         searchall_mode = False
     elif feedback_mode:
@@ -183,7 +188,7 @@ so that you don't have to navigate through different websites for the results. O
 
 
 def error(update, context):
-    update.message.reply_text('An exception has occurred, please try again!')
+    update.message.reply_text('An exception has occurred, please /feedback your search so that the bot owner may fix it!')
     print(f"ERROR:\nUpdate {update} caused error {context.error}\n")
     with open('logs/jobscraper_logs.txt', 'a') as logs:
         logs.write(f"ERROR:\nUpdate {update} caused error {context.error}\n")
